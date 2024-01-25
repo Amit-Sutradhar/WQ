@@ -1,3 +1,63 @@
+Water Quality Monitoring System
+This repository contains the Arduino code for a Water Quality Monitoring System using various sensors to measure parameters such as Total Dissolved Solids (TDS), Water Temperature, Turbidity, and pH. The data is logged to an SD card and sent to ThingSpeak for remote monitoring.
+
+Components Used
+Arduino Mega
+DFRobot_ESP_PH Sensor
+DS3231 RTC Module
+SD Card Module
+OneWire Temperature Sensor
+DHT22 Temperature and Humidity Sensor
+L298N Motor Driver Module
+GSM Module
+Turbidity Sensor
+Relay Module
+Wiring Instructions
+Connect the TDS sensor to pin 34.
+Connect the pH sensor to pin 35.
+Connect the OneWire temperature sensor to pin 32.
+Connect the Turbidity sensor to pin A1.
+Connect the RTC module to the SDA and SCL pins.
+Connect the GSM module to pins 25 (RX) and 26 (TX).
+Connect the L298N Motor Driver Module to pins 12, 13, 14, 27, and 15.
+Libraries Used
+Wire
+SD
+SPI
+DFRobot_ESP_PH
+EEPROM
+OneWire
+DallasTemperature
+RTClib
+SoftwareSerial
+Setup Instructions
+Ensure that the necessary libraries are installed in your Arduino IDE.
+Connect all components according to the wiring instructions.
+Upload the provided Arduino code to your Arduino Mega.
+Usage
+After uploading the code, open the Serial Monitor to view system initialization messages.
+The system will take measurements at regular intervals and log data to the SD card.
+Data is also sent to ThingSpeak for remote monitoring.
+Pumps are controlled based on specific intervals as defined in the code.
+Important Notes
+Ensure that the required libraries are installed in your Arduino IDE.
+Modify the ThingSpeak API key in the sendData() function with your own key.
+Adjust the sensor calibration values if necessary.
+Acknowledgements
+DFRobot_ESP_PH Library: DFRobot_ESP_PH
+RTClib Library: RTClib
+Feel free to customize and improve upon this project! If you encounter any issues or have suggestions, please open an issue on GitHub.
+
+
+
+
+
+
+
+
+
+
+
 # WQ
 
 
