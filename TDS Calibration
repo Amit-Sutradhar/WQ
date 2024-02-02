@@ -1,1 +1,39 @@
 
+
+
+const int analogPin = A0; // Analog pin connected to the TDS sensor
+
+// Calibration values
+float calibrationADCValue[] = {0,4, 17, 26, 130,381, 493};
+float calibrationTDS[] = {0,9, 22, 50, 300,634, 1000};
+
+void setup() {
+  Serial.begin(9600); // Initialize serial communication
+}
+
+void loop() {
+  int adcValue = analogRead(analogPin); // Read ADC value from the TDS sensor
+
+  // Map the ADC value to TDS concentration using linear interpolation
+  float tdsValue = interpolate(adcValue, calibrationADCValue, calibrationTDS, sizeof(calibrationADCValue) / sizeof(calibrationADCValue[0]));
+
+  // Print the TDS value to the serial monitor
+  Serial.print("ADC Value: ");
+  Serial.print(adcValue);
+  Serial.print(", TDS Value: ");
+  Serial.println(tdsValue);
+
+  delay(1000); // Delay for better readability in the serial monitor
+}
+
+// Custom linear interpolation function
+float interpolate(float x, float x_values[], float y_values[], int size) {
+  for (int i = 1; i < size; ++i) {
+    if (x < x_values[i]) {
+      // Linear interpolation formula: y = y1 + (x - x1) * ((y2 - y1) / (x2 - x1))
+      return y_values[i - 1] + (x - x_values[i - 1]) * ((y_values[i] - y_values[i - 1]) / (x_values[i] - x_values[i - 1]));
+    }
+  }
+  return y_values[size - 1]; // Return the last value if x is greater than the highest x_value
+}
+
