@@ -3,7 +3,7 @@
 
 const int analogPin = A0; // Analog pin connected to the TDS sensor
 
-// Calibration values
+// Calibration values---------------------------------------------adc to tds measure adc value that comes fron tds s,
 float calibrationADCValue[] = {0,4, 17, 26, 130,381, 493};
 float calibrationTDS[] = {0,9, 22, 50, 300,634, 1000};
 
